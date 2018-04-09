@@ -15,10 +15,10 @@ namespace Calculator
             }
 
             string[] regex = new string[] { ",", "\r", "\n" };
-            
+
             List<string> delimiters = new List<string>(regex);
 
-            if (input.Length > 2 && input.IndexOf("[")>-1)
+            if (input.Length > 2 && input.IndexOf("[") > -1)
             {
                 var pattern = @"\[(.*?)\]";
                 var matches = Regex.Matches(input, pattern);
@@ -26,11 +26,11 @@ namespace Calculator
                 foreach (Match m in matches)
                 {
                     delimiters.Add(m.Groups[1].ToString());
-                    Console.WriteLine(m.Groups[1]);
                 }
-                int indexClosingBracket = input.IndexOf("]");
+
+                int indexClosingBracket = input.LastIndexOf("]");
                 delimiters.Add(input.Substring(2, 1));
-                input = input.Substring(indexClosingBracket+1);
+                input = input.Substring(indexClosingBracket + 1);
             }
 
             string[] numbers = input.Split(delimiters.ToArray(), StringSplitOptions.RemoveEmptyEntries);
