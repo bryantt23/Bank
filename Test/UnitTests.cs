@@ -165,5 +165,31 @@ namespace Test
             Assert.AreEqual(expected, actual);
         }
 
+        [TestMethod]
+        public void Delimiter_Can_Be_Of_Any_Length_And_Return_Proper_Sum()
+        {
+            //Arrange
+            int expected = 6;
+
+            //Act
+            int actual = Calculator.Calculator.Add("//***\n1***2***3");
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void Delimiter_With_Large_Numbers_Can_Be_Of_Any_Length_And_Return_Proper_Sum()
+        {
+            //Arrange
+            int expected = 366;
+
+            //Act
+            int actual = Calculator.Calculator.Add("//????\n111????222????33");
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
     }
 }
