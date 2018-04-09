@@ -42,7 +42,7 @@ namespace Calculator
 
             if (negativeNumbers.Count > 0)
             {
-                throw new Exception(String.Join(", ", negativeNumbers.ToArray()));
+                throw new Exception("Negatives not allowed: "+String.Join(", ", negativeNumbers.ToArray()));
             }
 
             return sum;

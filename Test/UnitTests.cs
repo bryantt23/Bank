@@ -148,7 +148,7 @@ namespace Test
             }
             catch (Exception ex)
             {
-                Assert.AreEqual("-1, -3", ex.Message);
+                Assert.AreEqual("Negatives not allowed: -1, -3", ex.Message);
             }
         }
     }
