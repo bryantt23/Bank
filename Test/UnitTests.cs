@@ -108,5 +108,31 @@ namespace Test
             //Assert
             Assert.AreEqual(expected, actual);
         }
+
+        [TestMethod]
+        public void Support_Custom_Delimiter_And_Return_Proper_Sum()
+        {
+            //Arrange
+            int expected = 3;
+
+            //Act
+            int actual = Calculator.Calculator.Add("//;\n1;2");
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void Support_Custom_Delimiter_Asterisk_And_Return_Proper_Sum()
+        {
+            //Arrange
+            int expected = 26;
+
+            //Act
+            int actual = Calculator.Calculator.Add("//*\n1*2,14\n9");
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
