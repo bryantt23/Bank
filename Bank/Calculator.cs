@@ -29,7 +29,6 @@ namespace Calculator
                 }
 
                 int indexClosingBracket = input.LastIndexOf("]");
-                delimiters.Add(input.Substring(2, 1));
                 input = input.Substring(indexClosingBracket + 1);
             }
 

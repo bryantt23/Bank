@@ -204,5 +204,19 @@ namespace Test
             Assert.AreEqual(expected, actual);
         }
 
+        [TestMethod]
+        public void Multiple_Delimiters_With_Multiple_Lengths_And_Return_Proper_Sum()
+        {
+            //Arrange
+            int expected = 6;
+
+            //Act
+            int actual = Calculator.Calculator.Add("//[^^][|||]\n1^^2|||3");
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+
     }
 }
