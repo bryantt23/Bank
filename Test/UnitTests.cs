@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 
 namespace Test
 {
@@ -133,6 +134,22 @@ namespace Test
 
             //Assert
             Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void Throw_Exception_For_Negative_Numbers()
+        {
+            try
+            {
+                Calculator.Calculator.Add("-1,2,-3");
+
+                // Test fails if it makes it this far
+                Assert.Fail("Expected exception was not thrown.");
+            }
+            catch (Exception ex)
+            {
+                Assert.AreEqual("-1, -3", ex.Message);
+            }
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Calculator
 {
@@ -24,9 +25,24 @@ namespace Calculator
 
             int sum = 0;
 
+            List<int> negativeNumbers = new List<int>();
+
             foreach (string number in numbers)
             {
-                sum += int.Parse(number);
+                int value = int.Parse(number);
+                if (value < 0)
+                {
+                    negativeNumbers.Add(value);
+                }
+                else
+                {
+                    sum += value;
+                }                
+            }
+
+            if (negativeNumbers.Count > 0)
+            {
+                throw new Exception(String.Join(", ", negativeNumbers.ToArray()));
             }
 
             return sum;
