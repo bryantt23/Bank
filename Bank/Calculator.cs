@@ -5,7 +5,14 @@
 
         public static int Add(string numbers)
         {
-            return 0;
+            if (numbers.Length == 0)
+            {
+                return 0;
+            }
+
+            int result = int.Parse(numbers);
+
+            return result;
         }
     }
 }
