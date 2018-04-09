@@ -57,6 +57,30 @@ namespace Test
             Assert.AreEqual(expected, actual);
         }
 
+        [TestMethod]
+        public void Two_Comma_Separated_Numbers_Returns_Their_Sum()
+        {
+            //Arrange
+            int expected = 3;
 
+            //Act
+            int actual = Calculator.Calculator.Add("1,2");
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+        
+        [TestMethod]
+        public void Three_Comma_Separated_Numbers_Returns_Their_Sum()
+        {
+            //Arrange
+            int expected = 321;
+
+            //Act
+            int actual = Calculator.Calculator.Add("1,20,300");
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
     }
 }

@@ -10,7 +10,13 @@
                 return 0;
             }
 
-            int result = int.Parse(numbers);
+            string[] nums = numbers.Split(',');
+
+            int result = 0;
+
+            foreach(string n in nums){
+                result+=int.Parse(n);
+            }
 
             return result;
         }
