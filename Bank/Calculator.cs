@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace Calculator
 {
@@ -14,14 +15,25 @@ namespace Calculator
             }
 
             string[] regex = new string[] { ",", "\r", "\n" };
+            
+            List<string> delimiters = new List<string>(regex);
 
-            if (input.Length > 2 && input.Substring(0, 2).Equals("//"))
+            if (input.Length > 2 && input.IndexOf("[")>-1)
             {
-                regex = new string[] { ",", "\r", "\n", input.Substring(2, 1) };
-                input = input.Substring(2);
+                var pattern = @"\[(.*?)\]";
+                var matches = Regex.Matches(input, pattern);
+
+                foreach (Match m in matches)
+                {
+                    delimiters.Add(m.Groups[1].ToString());
+                    Console.WriteLine(m.Groups[1]);
+                }
+                int indexClosingBracket = input.IndexOf("]");
+                delimiters.Add(input.Substring(2, 1));
+                input = input.Substring(indexClosingBracket+1);
             }
 
-            string[] numbers = input.Split(regex, StringSplitOptions.RemoveEmptyEntries);
+            string[] numbers = input.Split(delimiters.ToArray(), StringSplitOptions.RemoveEmptyEntries);
 
             int sum = 0;
 

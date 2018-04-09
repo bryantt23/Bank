@@ -117,7 +117,7 @@ namespace Test
             int expected = 3;
 
             //Act
-            int actual = Calculator.Calculator.Add("//;\n1;2");
+            int actual = Calculator.Calculator.Add("//[;]\n1;2");
 
             //Assert
             Assert.AreEqual(expected, actual);
@@ -130,7 +130,7 @@ namespace Test
             int expected = 26;
 
             //Act
-            int actual = Calculator.Calculator.Add("//*\n1*2,14\n9");
+            int actual = Calculator.Calculator.Add("//[*]\n1*2,14\n9");
 
             //Assert
             Assert.AreEqual(expected, actual);
@@ -159,7 +159,7 @@ namespace Test
             int expected = 1026;
 
             //Act
-            int actual = Calculator.Calculator.Add("//*\n1111*2000000,14\n12,1000");
+            int actual = Calculator.Calculator.Add("//[*]\n1111*2000000,14\n12,1000");
 
             //Assert
             Assert.AreEqual(expected, actual);
@@ -172,7 +172,7 @@ namespace Test
             int expected = 6;
 
             //Act
-            int actual = Calculator.Calculator.Add("//***\n1***2***3");
+            int actual = Calculator.Calculator.Add("//[***]\n1***2***3");
 
             //Assert
             Assert.AreEqual(expected, actual);
@@ -185,7 +185,20 @@ namespace Test
             int expected = 366;
 
             //Act
-            int actual = Calculator.Calculator.Add("//????\n111????222????33");
+            int actual = Calculator.Calculator.Add("//[????]\n111????222????33");
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void Multiple_Delimiters_And_Return_Proper_Sum()
+        {
+            //Arrange
+            int expected = 6;
+
+            //Act
+            int actual = Calculator.Calculator.Add("//[*][%]\n1*2%3");
 
             //Assert
             Assert.AreEqual(expected, actual);
