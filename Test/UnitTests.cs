@@ -151,5 +151,19 @@ namespace Test
                 Assert.AreEqual("Negatives not allowed: -1, -3", ex.Message);
             }
         }
+
+        [TestMethod]
+        public void Ignore_Numbers_Larger_Than_1000_Return_Proper_Sum()
+        {
+            //Arrange
+            int expected = 1026;
+
+            //Act
+            int actual = Calculator.Calculator.Add("//*\n1111*2000000,14\n12,1000");
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
     }
 }

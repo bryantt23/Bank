@@ -15,9 +15,9 @@ namespace Calculator
 
             string[] regex = new string[] { ",", "\r", "\n" };
 
-            if (input.Length>2 && input.Substring(0, 2).Equals("//"))
+            if (input.Length > 2 && input.Substring(0, 2).Equals("//"))
             {
-                regex = new string[] { ",", "\r", "\n" ,input.Substring(2,1) };
+                regex = new string[] { ",", "\r", "\n", input.Substring(2, 1) };
                 input = input.Substring(2);
             }
 
@@ -36,13 +36,16 @@ namespace Calculator
                 }
                 else
                 {
-                    sum += value;
-                }                
+                    if (value <= 1000)
+                    {
+                        sum += value;
+                    }
+                }
             }
 
             if (negativeNumbers.Count > 0)
             {
-                throw new Exception("Negatives not allowed: "+String.Join(", ", negativeNumbers.ToArray()));
+                throw new Exception("Negatives not allowed: " + String.Join(", ", negativeNumbers.ToArray()));
             }
 
             return sum;
